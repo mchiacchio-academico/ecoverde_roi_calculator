@@ -53,7 +53,7 @@ input[type=number],select{width:100%;padding:8px;border:1px solid var(--bd);bord
 <div class="k"><span>Horas liberadas por mês</span><b id="hl"></b></div>
 <div class="k"><span>Custo por relatório: antes / depois</span><b id="cr"></b></div>
 <div class="k"><span>Economia líquida em 12 meses</span><b id="roi"></b></div>
-<div class="k"><span>Retorno para cada R$ 1 gasto com a solução</span><b id="pb"></b></div>
+<div class="k"><span>Economia líquida para cada R$ 1 gasto com a solução</span><b id="pb"></b></div>
 
 </section></div>
 <script>
@@ -65,7 +65,7 @@ const atual=os*h*c,hApos=h*(1-a),sol=os*hApos*c+os*api+inf,eco=atual-sol,hl=os*(
 $("eco").textContent=R(eco);$("c0").textContent=R(atual);$("c1").textContent=R(sol);
 $("hl").textContent=Math.round(hl)+" h";$("cr").textContent=R(atual/os)+" / "+R(sol/os);
 $("roi").textContent=R(eco*12);
-$("pb").textContent=sol>0?"R$ "+(atual/sol).toFixed(1).replace(".",",")+" de custo evitado":"n/d";
+$("pb").textContent=sol>0?"R$ "+(eco/sol).toFixed(2).replace(".",",")+" de economia":"n/d";
 const mx=Math.max(atual,sol,1);
 $("b1").style.width=Math.max(atual/mx*100,2)+"%";$("l1").textContent="Hoje: "+R(atual);
 $("b2").style.width=Math.max(sol/mx*100,2)+"%";$("l2").textContent="Com solução: "+R(sol);}
